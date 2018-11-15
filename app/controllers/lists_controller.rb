@@ -7,7 +7,7 @@ class ListsController < ApplicationController
   end
   
   def show
-    @item = @list.item.build # provided by has_many, creates a new item that is associated with the list
+    @item = @list.items.build # provided by has_many, creates a new item that is associated with the list
   end
   
   def create
