@@ -12,9 +12,14 @@ class ListsController < ApplicationController
   
   def create
     @list = List.new(list_params)
-    @list.save
     
-    redirect_to list_url(@list)
+    if @list.save
+      redirect_to list_url(@list)
+    else
+      # also need to reload all the lists
+      @lists = List.all
+      render :index
+    end
   end
   
   private 

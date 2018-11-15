@@ -2,7 +2,11 @@
   <header class="header">
     <h1>Todo Lists</h1>
     <%= form_for(@list) do |f| %>
-      <%= f.text_field :name, class: "new-todo", placeholder: "Add a new list" %>
+      <% if @list.errors[:name].present? %>
+        <%= f.text_field :name, class: "new-todo", placeholder: "Please give the list a name" %>
+      <% else %>
+        <%= f.text_field :name, class: "new-todo", placeholder: "Add a new list" %>
+      <% end %>
       <%= f.submit :style => "display: none" %>
     <% end %>
   </header>
