@@ -6,7 +6,7 @@
       # we can use form_for([@list, @item]) do |f| to create a form for nested item
     %>
     <%= form_for([@list, @item]) do |f| %>
-      <%= f.text_field :name, class: "new-todo", placeholder: "Add a new item" %>
+      <%= f.text_field :name, class: "new-todo", placeholder: (@item.errors.full_messages_for(:name).first || "Enter new item name...") %>
       <%= f.submit :style => "display: none" %>
     <% end %>
   </header>
