@@ -12,12 +12,16 @@
   </header>
 
   <section class="main">
+    <input class="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <% @list.items.each do |item| %>
-        <li>
+        <li class="<%= 'completed' if item.complete? %>">
           <div class="view">
-            <input class="toggle" type="checkbox">
-            <label><%= item.name %></label>
+            <%= form_for([@list, item]) do |f| %>
+              <%= f.check_box :status, class: 'toggle', checked: (true if item.complete?) %>
+              <label><%= item.name %></label>
+            <% end %>
           </div>
         </li>
       <% end %>
