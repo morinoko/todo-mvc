@@ -4,5 +4,7 @@
       <%= f.check_box :status, class: 'toggle', checked: item.complete? %>
       <%= f.label item.name %>
     <% end %>
+    
+    <%= button_to "x", list_item_path(item.list, item), method: :delete, class: "destroy" %>
   </div>
 <% end %>
