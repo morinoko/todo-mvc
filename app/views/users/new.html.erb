@@ -2,10 +2,9 @@
   <header class="header">
     <h1>Signup!</h1>
     <%= form_for @user do |f| %>
-      <%= f.email_field :email, class: "new-todo", placeholder: "Register with your email!" %>
+      <%= f.email_field :email, class: "form-element", placeholder: "Register with your email!" %>
+      <%= f.password_field :password, class: "form-element", placeholder: "Choose a password" %>
+      <%= f.submit "Register", class: "form-element" %>
     <% end %>
   </header>
-  
-  <footer class="footer">
-  </footer>
 </section>

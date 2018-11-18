@@ -2,10 +2,13 @@
   <header class="header">
     <h1>Log in!</h1>
     <%= form_tag(sessions_path) do %>
-      <%= email_field :email, '', class: "new-todo", placeholder: "Enter your email to log in" %>
+      <%= email_field :user, :email, class: "form-element", placeholder: "Enter your email to log in" %>
+      <%= password_field :user, :password, class: "form-element", placeholder: "Enter your password" %>
+      <%= submit_tag "Login", class: "form-element"  %>
     <% end %>
   </header>
   
-  <footer class="footer">
+  <footer class="register">
+    <%= link_to "Register here", new_user_path %>
   </footer>
 </section>
