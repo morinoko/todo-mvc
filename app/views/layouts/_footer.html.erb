@@ -2,4 +2,9 @@
   <p>This version created by <a href="https://github.com/morinoko" target="_blank">Felice Forby</a></p>
   <p>Originally created by <a href="http://twitter.com/oscargodson" target="_blank">Oscar Godson</a> and refactored by <a href="https://github.com/cburgmer" target="_blank">Christoph Burgmer</a></p>
   <p>Part of <a href="http://todomvc.com" target="_blank">TodoMVC</a></p>
+  
+  <% if logged_in? %>
+    <p>You're logged in as: <%= current_user.email %></p>
+    <%= link_to "Logout", logout_path %>
+  <% end %>
 </footer>

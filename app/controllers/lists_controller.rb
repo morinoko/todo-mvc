@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :set_list, only: [:show]
+  before_action :authentification_required
   
   def index
     @list = List.new
@@ -7,6 +7,7 @@ class ListsController < ApplicationController
   end
   
   def show
+    @list = List.find(params[:id])
     @item = Item.new
   end
   
@@ -26,9 +27,5 @@ class ListsController < ApplicationController
   
   def list_params
     params.require(:list).permit(:name)
-  end
-  
-  def set_list
-    @list = List.find(params[:id])
   end
 end
