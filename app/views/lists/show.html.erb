@@ -22,3 +22,23 @@
   <footer class="footer">
   </footer>
 </section>
+
+<script id="item-template" type="text/x-handlebars-template">
+  <li id="item_{{id}}">
+    <div class="view">
+      <form class="edit_item" id="edit_item_9" action="/lists/<%= @list.id %>/items/{{id}}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="_method" value="patch">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input name="item[status]" type="hidden" value="0"><input class="toggle" type="checkbox" value="1" name="item[status]" id="item_status">
+        
+        <label for="item_new item">{{name}}</label>
+      </form>    
+  
+      <form class="button_to" method="post" action="/lists/<%= @list.id %>/items/{{id}}">
+        <input type="hidden" name="_method" value="delete">
+        <input class="destroy" type="submit" value="x">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      </form>
+    </div>
+  </li>
+</script>

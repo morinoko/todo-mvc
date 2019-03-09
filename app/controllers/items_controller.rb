@@ -4,7 +4,12 @@ class ItemsController < ApplicationController
     @item = @list.items.build(item_params)
     
     if @item.save
-      redirect_to list_path(@list)
+      respond_to do |f|
+        # if the request is asking for HTML, redirect to the list
+        f.html {redirect_to list_path(@list)}
+        # if the request is asking for JSON, render a JSON representation of the list
+        f.json {render :json => @item}
+      end
     else
       render 'lists/show' #wrong render?
     end
@@ -22,7 +27,10 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     @item.destroy
     
-    redirect_to list_path(@item.list)
+    respond_to do |f|
+      f.json {render :json => @item}
+      f.html {redirect_to list_path(@item.list)}
+    end
   end
   
   private
